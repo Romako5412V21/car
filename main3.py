@@ -39,8 +39,8 @@ class Player():
 
     def move(self):
         self.rect.x -= p
-        if self.rect.x <= 0:
-            self.rect.x = 1366
+        if self.rect.x <= -100:
+            self.rect.x = 1550
     
      
 
@@ -58,13 +58,12 @@ background_image = pygame.transform.scale(background_image, (1366,700)) # зад
 # Колір фону
 bg_color = (255, 255, 255)
 player = Player(100, 480, 50, 50, 'Dino.png')
-kak = Player(633, 430, 100, 100, 'kak.png')
-kak1 = Player(633, 430, 100, 100, 'kak.png')
-kak2 = Player(1033, 430, 100, 100, 'kak.png')
-kak3 = Player(1433, 430, 100, 100, 'KAKTES.png')
-kak4 = Player(1233, 430, 100, 100, 'kak.png')
-kak5 = Player(1433, 430, 100, 100, 'kak.png')
-kak6 = Player(1633, 430, 100, 100, 'KAKTES.png')
+kak = Player(400, 430, 100, 100, 'kak.png')
+kak1 = Player(700, 230, 100, 100, 'Ptah.png')
+kak2 = Player(850, 230, 100, 100, 'Ptah.png')
+kak3 = Player(1150, 430, 100, 100, 'KAKTES.png')
+kak4 = Player(1500, 230, 100, 100, 'Ptah.png')
+start1 = Player(683,350,500, 100, 'Start1.png')
 
 # Головний цикл гри
 clock = pygame.time.Clock()
@@ -74,7 +73,7 @@ font1 = pygame.font.Font(None, 36) # 36 - це розмір тексту, при
 text = font1.render(str(f), True, (0,0,0)) # "Привіт!" - текст, який виводиться; (0,0,0) - колір у форматі RGB
 game = True
 while game:
-    p += 0.001
+    p +=  0.001
     f += 1 
 
        # Відображення фону
@@ -100,13 +99,13 @@ while game:
     window.blit(kak1.image, (kak1.rect.x, kak1.rect.y))  
     window.blit(kak2.image, (kak2.rect.x, kak2.rect.y)) 
     window.blit(kak3.image, (kak3.rect.x, kak3.rect.y)) 
-    window.blit(kak4.image, (kak4.rect.x, kak4.rect.y))  
-    window.blit(kak5.image, (kak5.rect.x, kak5.rect.y)) 
-    window.blit(kak6.image, (kak6.rect.x, kak6.rect.y)) 
+    window.blit(kak4.image, (kak4.rect.x, kak4.rect.y)) 
+    
+
     
     if player.rect.colliderect(kak.rect):
        print('Зіткнення відбулося')
-       game = False
+       game = False        
     if player.rect.colliderect(kak1.rect):
        print('Зіткнення відбулося')
        game = False
@@ -119,23 +118,19 @@ while game:
     if player.rect.colliderect(kak4.rect):
        print('Зіткнення відбулося')
        game = False
-    if player.rect.colliderect(kak5.rect):
-       print('Зіткнення відбулося')
        game = False
-    if player.rect.colliderect(kak6.rect):
-       print('Зіткнення відбулося')
-       game = False
+
 
     kak.move()
     kak1.move()
     kak2.move()
-    # kak3.move()
-    # kak4.move()
-    # kak5.move()
-    # kak6.move()
+    kak3.move()
+    kak4.move()
+
 
     clock.tick(60)
     pygame.display.update()
 
 
 pygame.quit()
+start1.move()
